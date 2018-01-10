@@ -213,6 +213,7 @@ describe('CreditCard', () => {
       expect(CreditCard.determineCardType('4111111111111111')).to.equal('VISA');
       expect(CreditCard.determineCardType('4012888888881881')).to.equal('VISA');
       expect(CreditCard.determineCardType('4222222222222')).to.equal('VISA');
+      expect(CreditCard.determineCardType('6771830999991239')).to.equal('MAESTRO');
       expect(CreditCard.determineCardType('0000000000000000')).to.equal(null);
       done();
     });
@@ -234,6 +235,8 @@ describe('CreditCard', () => {
       expect(CreditCard.determineCardType('411', {allowPartial: true})).to.equal('VISA');
       expect(CreditCard.determineCardType('4', {allowPartial: true})).to.equal('VISA');
       expect(CreditCard.determineCardType('42222222222', {allowPartial: true})).to.equal('VISA');
+      expect(CreditCard.determineCardType('6', {allowPartial: true})).to.equal('MAESTRO');
+      expect(CreditCard.determineCardType('5068', {allowPartial: true})).to.equal('MAESTRO');
       done();
     });
 
@@ -262,6 +265,7 @@ describe('CreditCard', () => {
       expect(CreditCard.isValidCardNumber('4111111111111111', 'VISA')).to.equal(true);
       expect(CreditCard.isValidCardNumber('4012888888881881', 'VISA')).to.equal(true);
       expect(CreditCard.isValidCardNumber('4222222222222', 'VISA')).to.equal(true);
+      expect(CreditCard.isValidCardNumber('6771830999991239', 'MAESTRO')).to.equal(true);
       done();
     });
 
@@ -289,6 +293,7 @@ describe('CreditCard', () => {
       expect(CreditCard.doesNumberMatchType('4111111111111111', 'VISA')).to.equal(true);
       expect(CreditCard.doesNumberMatchType('4012888888881881', 'VISA')).to.equal(true);
       expect(CreditCard.doesNumberMatchType('4222222222222', 'VISA')).to.equal(true);
+      expect(CreditCard.doesNumberMatchType('6771830999991239', 'MAESTRO')).to.equal(true);
       done();
     });
 
